@@ -1,0 +1,50 @@
+  const int numParqueos = 3;
+  const int sensoresParqueo[] = {2, 3, 4}; // Pines digitales del Arduino conectados a los sensores
+  int estadoParqueo[numParqueos];
+  int estadoAnteriorParqueo[numParqueos];
+  const int clockPin = 12;   // Pin para el reloj del contador
+  const int direccionPin = 13; // Pin para controlar la dirección del contador
+  
+  void setup() {
+    for (int i = 0; i < numParqueos; i++) {
+      pinMode(sensoresParqueo[i], INPUT);
+      estadoParqueo[i] = digitalRead(sensoresParqueo[i]);
+      estadoAnteriorParqueo[i] = estadoParqueo[i];
+    }
+    pinMode(direccionPin, OUTPUT);
+    pinMode(clockPin, OUTPUT);
+    digitalWrite(direccionPin, HIGH);
+    digitalWrite(clockPin, LOW);
+  }
+  
+  void loop() {
+
+    for (int i = 0; i < numParqueos; i++) {
+      estadoParqueo[i] = digitalRead(sensoresParqueo[i]);
+  
+      // Detección de entrada (flanco de subida)
+      if (estadoParqueo[i] == HIGH && estadoAnteriorParqueo[i] == LOW) {
+        // Configurar dirección para ascendente (incrementar)
+        digitalWrite(direccionPin, HIGH);
+        // Generar pulso de reloj
+        generarPulsoReloj();
+      }
+  
+      // Detección de salida (flanco de bajada)
+      if (estadoParqueo[i] == LOW && estadoAnteriorParqueo[i] == HIGH) {
+        // Configurar dirección para descendente (decrementar)
+        digitalWrite(direccionPin, LOW);
+        // Generar pulso de reloj
+        generarPulsoReloj();
+      }
+  
+      estadoAnteriorParqueo[i] = estadoParqueo[i];
+    }
+    delay(50); // Pequeño delay para evitar lecturas múltiples rápidas
+  }
+  
+  void generarPulsoReloj() {
+    digitalWrite(clockPin, HIGH);
+    delayMicroseconds(10); // Pulso corto
+    digitalWrite(clockPin, LOW);
+  }
