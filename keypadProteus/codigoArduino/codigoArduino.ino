@@ -1,21 +1,18 @@
 #include <Keypad.h>
 //Para puente h
-int entrada1 = 5;
-int entrada2 = 3;
+int entrada1 = 10;
+int entrada2 = 11;
 bool flag = true;
 
 //Para teclado matricial
-const byte rows = 4;
-const byte cols = 3;
+const byte rows = 1;
+const byte cols = 4;
 String text = String("");
 char hexaKeyers[rows][cols] = {
-  {'1', '2', '3'},
-  {'4', '5', '6'},
-  {'7', '8', '9'},
-  {'*', '0', '#'}
+  {'1', '2', '3', '4'}
 };
-byte row_Pins[rows] = {9, 8, 7, 6};
-byte col_Pins[cols] = {12, 11, 10};
+byte row_Pins[rows] = {5};
+byte col_Pins[cols] = {6, 7, 8, 9};
 
 Keypad cust_keypad = Keypad(makeKeymap(hexaKeyers), row_Pins, col_Pins, rows, cols);
 
@@ -31,7 +28,7 @@ void loop() {
   if(flag){
     analogWrite(entrada1, 100);
     analogWrite(entrada2, 0);
-    delay(2000);
+    delay(400);
     analogWrite(entrada1, 0);
     analogWrite(entrada2, 0);
     flag = false;
@@ -45,7 +42,7 @@ void loop() {
       Serial.println("Error");
       analogWrite(entrada1, 0);
       analogWrite(entrada2, 100);
-      delay(2000);
+      delay(300);
       analogWrite(entrada1, 0);
       analogWrite(entrada2, 0);
     }else{

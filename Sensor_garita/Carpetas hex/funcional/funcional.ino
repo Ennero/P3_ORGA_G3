@@ -3,7 +3,7 @@
 Servo myServo;  
 const int servoPin = 9;  
 const int trigPin = 12;  
-const int echoPin = 13;  
+const int echoPin = 13;
 const int proximityThreshold = 20;  // Aumenté el umbral a 20 cm para mejor detección
 
 void setup() {
@@ -44,11 +44,11 @@ void loop() {
   // Si la distancia es menor que el umbral, activa el servomotor
   if (distance < proximityThreshold) {
     Serial.println("Vehículo detectado! Abriendo barrera...");
-    myServo.write(180);  // Mueve el servomotor a 90 grados
+    myServo.write(90);  // Mueve el servomotor a 90 grados
     delay(5000);  // Espera 5 segundos (puedes cambiarlo a 20s si quieres)
     myServo.write(0);  // Mueve el servomotor de vuelta a 0 grados
     Serial.println("Cerrando barrera...");
   }
 
-  delay(100);  // Pequeño delay para estabilizar lecturas del sensor
+  delay(500);  // Pequeño delay para estabilizar lecturas del sensor
 }
