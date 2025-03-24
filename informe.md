@@ -100,10 +100,38 @@ _(-------------------------------------)_
 
 ---
 
-## EQUIPO UTILIZADO  
+## Equipo Utilizado
 
-_(---------------------------------)_
+El equipo utilizado para la realización del proyecto, tanto adquirido como proporcionado por los miembros del equipo, incluye:
 
+- **Cautín de 60 watts**
+- **Taladro con broca de 1/32**
+- **Compuertas lógicas de la serie 74**
+  - 74LS08
+  - 74LS32
+  - 74LS04
+- **Transistores:** 2N2222A
+- **Resistencias varias**
+- **Luces LED color rojo**
+- **Dip Switch**
+- **Borneras de 2 y 3 terminales**
+- **Estaño**
+- **Esponja para limpiar estaño**
+- **Arduino UNO**
+- **Cable para protoboard**
+- **Protoboard**
+- **Placas de fibra de vidrio**
+- **Duroport**
+- **Carritos de juguete**
+- **Sensor de ultrasonico**
+- **Fotorresistencias LDR**
+- **Ttermocogible**
+- **Motor de 1-6 voltios**
+- **Teclado 3x3**
+- **Cables Dupont**
+- **FLIB-FLOP**
+- **Arduino Uno**
+- **Arduino Mega**
 ---
 
 ## PRESUPUESTO  
@@ -124,10 +152,10 @@ _(-------------------------)_
   pppppppppppppppp  
 
 - **Aporte de David Estuardo Barrios Ramírez**  
-  ppppppppppp  
+  Colaboro principalmente en la soldura del puente H, en la creacion de los sensores del primer nivel, segundo nivel y tercer nivel
 
 - **Aporte de Brandon Antonio Marroquin Pérez**  
-  ppppppppppppppp  
+  Se encargó del manejo del presupuesto del grupo, asegurando la correcta asignación de recursos. Además, fue responsable de la creación del informe del grupo, documentando cada etapa del proceso. Ademas de ayudar en la decoracion de la Maqueta y asumió la responsabilidad de todo lo relacionado con las placas, desde el planchado y colocación en el ácido hasta la pulida y acabado final, garantizando la calidad y precisión en cada detalle.
 
 ---
 
@@ -159,3 +187,24 @@ ppp
 ## FOTOGRAFÍA DE LOS CIRCUITOS FÍSICOS  
 
 pp  
+
+## Videos del funcionamiento de manera separada
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Video 1: Puente H con teclado</h5>
+            <video width="100%" controls>
+                <source src="/videos/Puente H con teclado.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+        <div class="col-md-6">
+            <h5>Video 2: Detalle del Sistema de Seguridad</h5>
+            <video width="100%" controls>
+                <source src="ruta/al/video2.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+    </div>
+</div>
