@@ -200,4 +200,28 @@ pp
        class="btn btn-primary btn-lg shadow-lg">
         🎥 Ver Video
     </a>
+    <h5>Video 2: Circuito de estacionamiento</h5>
+    <a href="https://drive.google.com/file/d/17yzEijuIVJaPfqoEWJlil1kkXTxCtNVM/view?usp=sharing" 
+       target="_blank" 
+       class="btn btn-primary btn-lg shadow-lg">
+        🎥 Ver Video
+    </a>
+    <h5>Video 3: funcionamiento del contador</h5>
+    <a href="https://drive.google.com/file/d/1iBH4ItbxMRriucN9-L3cGpLwQFgZrWLf/view?usp=sharing" 
+       target="_blank" 
+       class="btn btn-primary btn-lg shadow-lg">
+        🎥 Ver Video
+    </a>
+    <h5>Video 4: Funcionamiento puente H (inicios)</h5>
+    <a href="https://drive.google.com/file/d/1_NcNHPXqe8CUbmW9W54yAJnv0poMBiHt/view?usp=sharing" 
+       target="_blank" 
+       class="btn btn-primary btn-lg shadow-lg">
+        🎥 Ver Video
+    </a>
+    <h5>Video 5: Servo motor funcional</h5>
+    <a href="https://drive.google.com/file/d/1bIblLQhWFZWylOnM9_nF1qKr8OAT_6ox/view?usp=sharing" 
+       target="_blank" 
+       class="btn btn-primary btn-lg shadow-lg">
+        🎥 Ver Video
+    </a>
 </div>
