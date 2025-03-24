@@ -9,7 +9,7 @@
 
 ---
 <div style="position: relative; display: inline-block;">
-    <img src="img/logo.png" alt="Imagen de fondo" width="500">
+    <img src="img y otros/logo.png" alt="Imagen de fondo" width="500">
     <div style="position: absolute; top: 20px; left: 50px; color: white; font-size: 24px; font-weight: bold;">
         - 
     </div>
@@ -95,15 +95,329 @@ Desarrollar e implementar un sistema de parqueo automatizado basado en circuitos
 
 ## CONTENIDO  
 
-_(--------------------)_
+### Código de Arduino para la Configuración del Teclado
 
+```c
+#include <Keypad.h>
+
+// Inicializar variables para teclado matricial
+const byte rows = 1;
+const byte cols = 4;
+
+String text = String("");
+char hexaKeyers[rows][cols] = {
+  {'1', '2', '3'}
+};
+byte row_Pins[rows] = {8};
+byte col_Pins[cols] = {7, 6, 5};
+
+Keypad cust_keypad = Keypad(makeKeymap(hexaKeyers), row_Pins, col_Pins, rows, cols);
+
+// Inicializar variables puente H
+int entrada1 = 9;
+int entrada2 = 10;
+bool flagInicial = true;
+bool flagCerrado = false;
+
+// Inicializar variables alarma
+int salidaBocina = 11;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(entrada1, OUTPUT);
+  pinMode(entrada2, OUTPUT);
+  pinMode(salidaBocina, OUTPUT);
+}
+
+void loop() {
+  if(flagInicial){
+    analogWrite(entrada1, 100);
+    analogWrite(entrada2, 0);
+    delay(500);
+    analogWrite(entrada1, 0);
+    analogWrite(entrada2, 0);
+    flagInicial = false;
+  }
+
+  char cust_key = cust_keypad.getKey();
+  if(cust_key){
+    Serial.println(cust_key);
+    text.concat(cust_key);
+  }
+  if(text.length() == 3){
+    Serial.println(text);
+    if(flagCerrado){
+      if(text == "123"){
+        analogWrite(entrada1, 100);
+        analogWrite(entrada2, 0);
+        delay(500);
+        analogWrite(entrada1, 0);
+        analogWrite(entrada2, 0);
+        digitalWrite(salidaBocina, LOW);
+        flagCerrado = false;
+      }
+    }else{
+      if(!text.equals("123")){
+        analogWrite(entrada1, 0);
+        analogWrite(entrada2, 70);
+        delay(170);
+        analogWrite(entrada1, 0);
+        analogWrite(entrada2, 0);
+        digitalWrite(salidaBocina, HIGH);
+        flagCerrado = true;
+      }
+    }
+    text = "";
+  }
+}
+```
+
+
+-**Codigo de arduino para la configuracion del pueteH**
+
+```c
+int entrada1 = 9;
+int entrada2 = 10;
+int velocidad = 100;
+
+void setup() {
+  pinMode(entrada1, OUTPUT);
+  pinMode(entrada2, OUTPUT);
+}
+
+void loop() {
+  analogWrite(entrada1, 100);
+  analogWrite(entrada2, 0);
+  delay(3000);
+
+  analogWrite(entrada1, 0);
+  analogWrite(entrada2, 100);
+  delay(3000);
+}
+```
+
+
+- **Codigo de arduino para la configuracion del sensor ultrasonico**
+```c
+#include <NewPing.h>
+
+const int TRIG_PIN = 4;   // Pin de disparo (Trigger)
+const int ECHO_PIN = 5;   // Pin de eco (Echo)
+const int MAX_DIST = 200; // Distancia máxima en cm
+const int LED = 12;       // Pin del LED
+
+NewPing sonar(TRIG_PIN, ECHO_PIN, MAX_DIST);
+
+void setup() {
+    pinMode(LED, OUTPUT);
+    Serial.begin(9600);
+}
+
+void loop() {
+    int distancia = sonar.ping_cm(); // Mide la distancia en cm
+
+    if (distancia > 0 && distancia < 10) {  // Si un objeto está a menos de 10 cm
+        digitalWrite(LED, HIGH);  // Enciende el LED
+        Serial.print("Objeto detectado a ");
+        Serial.print(distancia);
+        Serial.println(" cm");
+    } else {
+        digitalWrite(LED, LOW);  // Apaga el LED
+        Serial.println("No hay objeto cercano");
+    }
+
+    delay(100);
+}
+```
+
+- **Codigo de arduino para la configuracion del contador de 3**
+
+```c
+const int numParqueos = 3; // Cambia esto al número real de espacios de estacionamiento
+const int sensoresParqueo[] = {1, 2, 3}; // Pines digitales del Arduino conectados a los sensores
+int estadoParqueo[numParqueos];
+int estadoAnteriorParqueo[numParqueos];
+const int clockPin = 6;   // Pin para el reloj del contador
+const int direccionPin = 7; // Pin para controlar la dirección del contador
+
+void setup() {
+  for (int i = 0; i < numParqueos; i++) {
+    pinMode(sensoresParqueo[i], INPUT);
+    estadoParqueo[i] = digitalRead(sensoresParqueo[i]);
+    estadoAnteriorParqueo[i] = estadoParqueo[i];
+  }
+  pinMode(clockPin, OUTPUT);
+  pinMode(direccionPin, OUTPUT);
+  digitalWrite(clockPin, LOW);
+  digitalWrite(direccionPin, HIGH); // Inicializar dirección a ascendente (ejemplo)
+}
+
+void loop() {
+  for (int i = 0; i < numParqueos; i++) {
+    estadoParqueo[i] = digitalRead(sensoresParqueo[i]);
+
+    // Detección de entrada (flanco de subida)
+    if (estadoParqueo[i] == HIGH && estadoAnteriorParqueo[i] == LOW) {
+      // Configurar dirección para ascendente (incrementar)
+      digitalWrite(direccionPin, HIGH);
+      // Generar pulso de reloj
+      generarPulsoReloj();
+    }
+
+    // Detección de salida (flanco de bajada)
+    if (estadoParqueo[i] == LOW && estadoAnteriorParqueo[i] == HIGH) {
+      // Configurar dirección para descendente (decrementar)
+      digitalWrite(direccionPin, LOW);
+      // Generar pulso de reloj
+      generarPulsoReloj();
+    }
+
+    estadoAnteriorParqueo[i] = estadoParqueo[i];
+  }
+  delay(50); // Pequeño delay para evitar lecturas múltiples rápidas
+}
+
+void generarPulsoReloj() {
+  digitalWrite(clockPin, HIGH);
+  delayMicroseconds(10); // Pulso corto
+  digitalWrite(clockPin, LOW);
+}
+```
+- **Codigo de arduino para la configuracion del contador de 4**
+```c
+const int numParqueos = 4; // Cambia esto al número real de espacios de estacionamiento
+const int sensoresParqueo[] = {2, 3, 4, 5}; // Pines digitales del Arduino conectados a los sensores
+int estadoParqueo[numParqueos];
+int estadoAnteriorParqueo[numParqueos];
+const int clockPin = 6;   // Pin para el reloj del contador
+const int direccionPin = 7; // Pin para controlar la dirección del contador
+
+void setup() {
+  for (int i = 0; i < numParqueos; i++) {
+    pinMode(sensoresParqueo[i], INPUT);
+    estadoParqueo[i] = digitalRead(sensoresParqueo[i]);
+    estadoAnteriorParqueo[i] = estadoParqueo[i];
+  }
+  pinMode(clockPin, OUTPUT);
+  pinMode(direccionPin, OUTPUT);
+  digitalWrite(clockPin, LOW);
+  digitalWrite(direccionPin, HIGH); // Inicializar dirección a ascendente (ejemplo)
+}
+
+void loop() {
+  for (int i = 0; i < numParqueos; i++) {
+    estadoParqueo[i] = digitalRead(sensoresParqueo[i]);
+
+    // Detección de entrada (flanco de subida)
+    if (estadoParqueo[i] == HIGH && estadoAnteriorParqueo[i] == LOW) {
+      // Configurar dirección para ascendente (incrementar)
+      digitalWrite(direccionPin, HIGH);
+      // Generar pulso de reloj
+      generarPulsoReloj();
+    }
+
+    // Detección de salida (flanco de bajada)
+    if (estadoParqueo[i] == LOW && estadoAnteriorParqueo[i] == HIGH) {
+      // Configurar dirección para descendente (decrementar)
+      digitalWrite(direccionPin, LOW);
+      // Generar pulso de reloj
+      generarPulsoReloj();
+    }
+
+    estadoAnteriorParqueo[i] = estadoParqueo[i];
+  }
+  delay(50); // Pequeño delay para evitar lecturas múltiples rápidas
+}
+
+void generarPulsoReloj() {
+  digitalWrite(clockPin, HIGH);
+  delayMicroseconds(10); // Pulso corto
+  digitalWrite(clockPin, LOW);
+}
+
+- **Codigo de arduino para la configuracion del contador de 5**
+
+const int numParqueos = 5; // Cambia esto al número real de espacios de estacionamiento
+const int sensoresParqueo[] = {1, 2, 3, 4, 5}; // Pines digitales del Arduino conectados a los sensores
+int estadoParqueo[numParqueos];
+int estadoAnteriorParqueo[numParqueos];
+const int clockPin = 6;   // Pin para el reloj del contador
+const int direccionPin = 7; // Pin para controlar la dirección del contador
+
+void setup() {
+  for (int i = 0; i < numParqueos; i++) {
+    pinMode(sensoresParqueo[i], INPUT);
+    estadoParqueo[i] = digitalRead(sensoresParqueo[i]);
+    estadoAnteriorParqueo[i] = estadoParqueo[i];
+  }
+  pinMode(clockPin, OUTPUT);
+  pinMode(direccionPin, OUTPUT);
+  digitalWrite(clockPin, LOW);
+  digitalWrite(direccionPin, HIGH); // Inicializar dirección a ascendente (ejemplo)
+}
+
+void loop() {
+  for (int i = 0; i < numParqueos; i++) {
+    estadoParqueo[i] = digitalRead(sensoresParqueo[i]);
+
+    // Detección de entrada (flanco de subida)
+    if (estadoParqueo[i] == HIGH && estadoAnteriorParqueo[i] == LOW) {
+      // Configurar dirección para ascendente (incrementar)
+      digitalWrite(direccionPin, HIGH);
+      // Generar pulso de reloj
+      generarPulsoReloj();
+    }
+
+    // Detección de salida (flanco de bajada)
+    if (estadoParqueo[i] == LOW && estadoAnteriorParqueo[i] == HIGH) {
+      // Configurar dirección para descendente (decrementar)
+      digitalWrite(direccionPin, LOW);
+      // Generar pulso de reloj
+      generarPulsoReloj();
+    }
+
+    estadoAnteriorParqueo[i] = estadoParqueo[i];
+  }
+  delay(50); // Pequeño delay para evitar lecturas múltiples rápidas
+}
+
+void generarPulsoReloj() {
+  digitalWrite(clockPin, HIGH);
+  delayMicroseconds(10); // Pulso corto
+  digitalWrite(clockPin, LOW);
+}
+```
 ---
 
 ## DIAGRAMAS DE DISEÑO DEL CIRCUITO  
 
-_(-------------------------------------)_
+- **DIAGRAMA DEL PUENTEH**
 
----
+![alt text](/img%20y%20otros/puenteH.png)
+
+- **DIAGRAMA SERVOMOTORES**
+
+![alt text](/img%20y%20otros/SERMOTORES.png)
+
+- **DIAGRAMA DE LA CONFIGURACION DEL TECLADO**
+
+![alt text](/img%20y%20otros/TECLADO.png)
+
+- **DIAGRAMA LOS CONTADORES**
+    - **CONTADOR DE 4**
+
+![alt text](/img%20y%20otros/4.png)
+
+   - **CONTADOR DE 5**
+
+![alt text](/img%20y%20otros/5.png)
+
+   - **CONTADOR DE 3**
+
+![alt text](/img%20y%20otros/3.png)
+
+
+
 
 ## Equipo Utilizado
 
@@ -138,6 +452,7 @@ El equipo utilizado para la realización del proyecto, tanto adquirido como prop
 - **Arduino Uno**
 - **Arduino Mega**
 - **Decoders**
+- **Display 7 segmentos**
 ---
 
 ## PRESUPUESTO  
@@ -148,20 +463,23 @@ _(-------------------------)_
 
 ## APORTE INDIVIDUAL DE CADA INTEGRANTE  
 
-- **Aporte de Enner Mendizabal - 202302220**  
-  ppppppppppppppp  
+# Aportaciones del Proyecto
 
-- **Aporte de Esteban Sánchez Túchez**  
-  ppppppppppppppppp  
+## Enner Mendizabal - 202302220  
+Como coordinador del grupo, proporcionó los materiales necesarios para la maqueta y estableció una base sólida para su construcción. Además, contribuyó activamente en la implementación y distribución de los estacionamientos en los tres niveles de la maqueta, asegurando una estructura funcional y organizada. También brindó apoyo logístico en la planificación general del proyecto.
 
-- **Aporte de Juan José Sandoval Ruiz**  
-  pppppppppppppppp  
+- ## Esteban Sánchez Túchez  
+Diseñó y programó el contador digital en Proteus, asegurando su correcto funcionamiento tanto en simulación como en su versión física. Además, desarrolló el código en Arduino para los contadores y propuso ideas innovadoras para mejorar otras secciones del proyecto. También desempeñó un papel clave en la integración del puente H con el teclado, garantizando su correcto funcionamiento mediante pruebas y ajustes.
 
-- **Aporte de David Estuardo Barrios Ramírez**  
-  Colaboro principalmente en la soldura del puente H, en la creacion de los sensores del primer nivel, segundo nivel y tercer nivel
+- ## Juan José Sandoval Ruiz  
+Se encargó de la creación del puente H, tanto en su versión física como en su impresión, asegurando su correcto diseño y operación. Asimismo, diseñó y construyó el teclado en Proteus y en su versión física, optimizando su funcionalidad y conexión con otros componentes. También desarrolló el código en Arduino para el correcto funcionamiento del teclado y el puente H, asegurando una integración eficiente en el sistema general del proyecto.
 
-- **Aporte de Brandon Antonio Marroquin Pérez**  
-  Se encargó del manejo del presupuesto del grupo, asegurando la correcta asignación de recursos. Además, fue responsable de la creación del informe del grupo, documentando cada etapa del proceso. Ademas de ayudar en la decoracion de la Maqueta y asumió la responsabilidad de todo lo relacionado con las placas, desde el planchado y colocación en el ácido hasta la pulida y acabado final, garantizando la calidad y precisión en cada detalle.
+- ## David Estuardo Barrios Ramírez  
+Participó activamente en la soldadura del puente H, asegurando conexiones eléctricas firmes y funcionales. Además, colaboró en la creación de los sensores de los tres niveles de la maqueta, garantizando su correcta instalación y calibración. También brindó apoyo en la construcción estructural de la maqueta y contribuyó en el desarrollo del contador, optimizando su precisión y respuesta dentro del sistema.
+
+- ## Brandon Antonio Marroquín Pérez  
+Administró el presupuesto del grupo, asegurando una correcta distribución y asignación de los recursos necesarios para el desarrollo del proyecto. Fue responsable de la elaboración del informe del grupo, documentando de manera detallada cada etapa del proceso. Además, colaboró activamente en la decoración de la maqueta para mejorar su presentación. También asumió la responsabilidad de todo el proceso relacionado con las placas, desde el planchado y la inmersión en ácido hasta el pulido y acabado final, garantizando precisión, calidad y estética en cada detalle del proyecto.
+
 
 ---
 
@@ -180,19 +498,30 @@ La construcción del sistema físico ha respetado las restricciones de hardware,
 
 ## APORTE DE TODOS LOS INTEGRANTES DEL GRUPO  
 
-p  
+![alt text](/img%20y%20otros/a.png)
 
+![alt text](/img%20y%20otros/b.png)
+
+![alt text](/img%20y%20otros/c.png)
+
+![alt text](/img%20y%20otros/d.png)
 ---
 
 ## DIAGRAMA DEL CIRCUITO IMPRESO  
 
-ppp  
+ - **PUENTEH**
+
+![alt text](/img%20y%20otros/impresion_PuenteH.png )
 
 ---
 
 ## FOTOGRAFÍA DE LOS CIRCUITOS FÍSICOS  
 
-pp  
+- **PUENTE-H**
+
+![alt text](/img%20y%20otros/h.png)
+
+![alt text](/img%20y%20otros/porton.png)
 
 
 ## Videos del funcionamiento de manera separada
