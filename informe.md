@@ -132,6 +132,7 @@ El equipo utilizado para la realización del proyecto, tanto adquirido como prop
 - **FLIB-FLOP**
 - **Arduino Uno**
 - **Arduino Mega**
+- **Decoders**
 ---
 
 ## PRESUPUESTO  
