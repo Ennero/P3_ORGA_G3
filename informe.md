@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" style="font-family: 'Times New Roman', Times, serif;">
 
 # UNIVERSIDAD DE SAN CARLOS DE GUATEMALA  
 ## FACULTAD DE INGENIERÍA  
@@ -18,6 +18,10 @@
 
 ---
 
+
+
+
+
 ##              Integrantes
  **Enner Esaí Mendizabal Castro** - 202302220  
  **Esteban Sánchez Túchez** - 202300769  
@@ -28,6 +32,7 @@
 **GUATEMALA, 22 DE MARZO DEL 2025**  
 </div>
 ----
+<div style="font-family: 'Times New Roman', Times, serif;">
 
 # ÍNDICE  
 
@@ -225,4 +230,5 @@ pp
        class="btn btn-primary btn-lg shadow-lg">
         🎥 Ver Video
     </a>
+</div>
 </div>
