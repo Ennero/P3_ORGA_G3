@@ -42,16 +42,10 @@
    - Objetivos específicos  
 3. [CONTENIDO](#contenido)  
 4. [DIAGRAMAS DE DISEÑO DEL CIRCUITO](#diagramas-de-diseño-del-circuito)  
-   - Diagrama de ------------------
-   - Diagrama de --------------
-   - Diagrama de ---------------  
-   - Diagrama de -------------------  
-   - Diagrama de --------------------------
-   - Diagrama de ---------------------------
-   - Diagrama de ------------------------  
-   - Diagrama de -----------------------
-   - Diagrama de --------------------------------
-   - Diagrama de -----------------------------
+   - DIAGRAMA DEL PUENTEH
+   - DIAGRAMA SERVOMOTORES
+   - DIAGRAMA DE LA CONFIGURACION DEL TECLADO
+   - DIAGRAMA LOS CONTADORES 
 5. [EQUIPO UTILIZADO](#equipo-utilizado)  
 6. [PRESUPUESTO](#presupuesto)  
 7. [APORTE INDIVIDUAL DE CADA INTEGRANTE](#aporte-individual-de-cada-integrante)  
@@ -505,6 +499,9 @@ La construcción del sistema físico ha respetado las restricciones de hardware,
 ![alt text](/img%20y%20otros/c.png)
 
 ![alt text](/img%20y%20otros/d.png)
+
+![alt text](/img%20y%20otros/e.png)
+
 ---
 
 ## DIAGRAMA DEL CIRCUITO IMPRESO  
