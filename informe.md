@@ -188,73 +188,19 @@ ppp
 
 pp  
 
-<!-- filepath: [informe.md](http://_vscodecontentref_/0) -->
+
 ## Videos del funcionamiento de manera separada
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h5>Video 1: Puente H con teclado</h5>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#videoModal1">
-                Ver Video
-            </button>
-        </div>
-        <div class="col-md-6">
-            <h5>Video 2: Detalle del Sistema de Seguridad</h5>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#videoModal2">
-                Ver Video
-            </button>
-        </div>
-    </div>
+<div class="container text-center mt-5">
+    <h5>Video 1: Puente H con teclado</h5>
+    <a href="https://drive.google.com/file/d/1beyIAKXEkxay54qloO74zUteSLEUPP7C/view?usp=sharing" 
+       target="_blank" 
+       class="btn btn-primary btn-lg shadow-lg">
+        🎥 Ver Video
+    </a>
 </div>
 
-<!-- Modal 1 -->
-<div class="modal fade" id="videoModal1" tabindex="-1" role="dialog" aria-labelledby="videoModal1Label" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="videoModal1Label">Video 1: Puente H con teclado</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <video width="100%" controls>
-                    <source src="https://drive.google.com/file/d/1beyIAKXEkxay54qloO74zUteSLEUPP7C/view?usp=sharing" type="video/mp4">
-                    Tu navegador no soporta la etiqueta de video.
-                </video>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 2 -->
-<div class="modal fade" id="videoModal2" tabindex="-1" role="dialog" aria-labelledby="videoModal2Label" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="videoModal2Label">Video 2: Detalle del Sistema de Seguridad</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <video width="100%" controls>
-                    <source src="https://drive.google.com/uc?export=download&id=ID_DEL_VIDEO2" type="video/mp4">
-                    Tu navegador no soporta la etiqueta de video.
-                </video>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-### Video 1: Puente H con teclado  
-<iframe src="https://drive.google.com/file/d/1beyIAKXEkxay54qloO74zUteSLEUPP7C/view?usp=sharing" width="640" height="360" allow="autoplay"></iframe>
-
-### Video 2: Detalle del Sistema de Seguridad  
-<iframe src="https://drive.google.com/file/d/ID_DEL_VIDEO2/preview" width="640" height="360" allow="autoplay"></iframe>
+<!-- Bootstrap JS (Opcional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
