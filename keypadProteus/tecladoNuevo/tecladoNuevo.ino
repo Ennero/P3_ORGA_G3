@@ -9,8 +9,8 @@ String text = String("");
 char hexaKeyers[rows][cols] = {
   {'1', '2', '3'}
 };
-byte row_Pins[rows] = {8};
-byte col_Pins[cols] = {7, 6, 5};                                                                                                                                                                                                                                                                                                                              
+byte row_Pins[rows] = {5};
+byte col_Pins[cols] = {6, 7, 8};                                                                                                                                                                                                                                                                                                                              
 
 Keypad cust_keypad = Keypad(makeKeymap(hexaKeyers), row_Pins, col_Pins, rows, cols);
 
@@ -18,10 +18,14 @@ Keypad cust_keypad = Keypad(makeKeymap(hexaKeyers), row_Pins, col_Pins, rows, co
 int entrada1 = 9;
 int entrada2 = 10;
 bool flagInicial = true;
-bool flagCerrado = false;
+bool flagPuenteAbierto = false;
 
 //Inicializar variables alarma
 int salidaBocina = 11;
+bool bocina = false;
+
+//Inicializar variables de contadores
+int contadorGeneral = 4;
 
 void setup() {
   // put your setup code here, to run once:
@@ -29,6 +33,7 @@ void setup() {
   pinMode(entrada1, OUTPUT);
   pinMode(entrada2, OUTPUT);
   pinMode(salidaBocina, OUTPUT);
+  pinMode(contadorGeneral, INPUT);
 }
 
 void loop() {
@@ -39,6 +44,7 @@ void loop() {
     analogWrite(entrada1, 0);
     analogWrite(entrada2, 0);
     flagInicial = false;
+    flagPuenteAbierto = true;
   }
   // put your main code here, to run repeatedly:
   char cust_key = cust_keypad.getKey();
@@ -46,19 +52,9 @@ void loop() {
     Serial.println(cust_key);
     text.concat(cust_key);
   }
-  if(text.length() == 3){
-    Serial.println(text);
-    if(flagCerrado){
-      if(text == "123"){
-        analogWrite(entrada1, 100);
-        analogWrite(entrada2, 0);
-        delay(500);
-        analogWrite(entrada1, 0);
-        analogWrite(entrada2, 0);
-        digitalWrite(salidaBocina, LOW);
-        flagCerrado = false;
-      }
-    }else{
+  if(flagPuenteAbierto){
+    if(text.length() == 3){
+      Serial.println(text);
       if(!text.equals("123")){
         analogWrite(entrada1, 0);
         analogWrite(entrada2, 70);
@@ -66,9 +62,42 @@ void loop() {
         analogWrite(entrada1, 0);
         analogWrite(entrada2, 0);
         digitalWrite(salidaBocina, HIGH);
-        flagCerrado = true;
+        bocina = true;
+        flagPuenteAbierto = false;
+      }
+      text = "";
+    }else if(digitalRead(contadorGeneral) == 1){
+      analogWrite(entrada1, 0);
+      analogWrite(entrada2, 70);
+      delay(170);
+      analogWrite(entrada1, 0);
+      analogWrite(entrada2, 0);
+      flagPuenteAbierto = false;
+    }
+  }else{
+    if(bocina){
+      if(text.length() == 3){
+        if(text.equals("123")){
+          analogWrite(entrada1, 100);
+          analogWrite(entrada2, 0);
+          delay(500);
+          analogWrite(entrada1, 0);
+          analogWrite(entrada2, 0);
+          digitalWrite(salidaBocina, LOW);
+          flagPuenteAbierto = true;
+          bocina = false;
+        }
+        text = "";
+      }
+    }else{
+      if(digitalRead(contadorGeneral) == 0){
+        analogWrite(entrada1, 100);
+        analogWrite(entrada2, 0);
+        delay(500);
+        analogWrite(entrada1, 0);
+        analogWrite(entrada2, 0);
+        flagPuenteAbierto = true;
       }
     }
-    text = "";
   }
 }
