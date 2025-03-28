@@ -467,9 +467,9 @@ El equipo utilizado para la realización del proyecto, tanto adquirido como prop
 |            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q86.20</span>  |
 | <span class="feha">17/03/2025</span> | 3M DE ALAMBRE ROJO PARA PROTOBOARD | Q9.00   |
 |            | 1 FOTORESISTENCIAS                 | Q3.75   |
-|            | 1M TERMOCOLGIBLE                   | Q3.50   |
+|            | 1M TERMOCOGIBLE                   | Q3.50   |
 |            | 10 RESISTENCIAS 330                | Q5.00   |
-|            | 1M TERMOCOLGIBLE                   | Q2.05   |
+|            | 1M TERMOCOGIBLE                   | Q2.05   |
 |            | 5M DE ALAMBRE NEGRO                | Q18.00  |
 |            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q38.75</span>  |
 | <span class="fcha">20/03/2025</span> | 1 Teclado                        | Q15.00  |
