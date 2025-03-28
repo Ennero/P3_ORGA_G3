@@ -12,7 +12,7 @@ Servo myServo2;
 const int servoPin2 = 5;
 const int trigPin2 = 7;
 const int echoPin2 = 11;
-const int proximityThreshold2 = 5;
+const int proximityThreshold2 = 4;
 
 void setup() {
     Serial.begin(9600);
@@ -74,4 +74,3 @@ void loop() {
 
     delay(500);  // Estabilizar mediciones
 }
-

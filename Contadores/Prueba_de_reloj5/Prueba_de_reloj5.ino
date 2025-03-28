@@ -1,9 +1,9 @@
 const int numParqueos = 5; // Cambia esto al número real de espacios de estacionamiento
-const int sensoresParqueo[] = {1, 2, 3, 4, 5}; // Pines digitales del Arduino conectados a los sensores
+const int sensoresParqueo[] = {2, 3, 4, 5, 6}; // Pines digitales del Arduino conectados a los sensores
 int estadoParqueo[numParqueos];
 int estadoAnteriorParqueo[numParqueos];
-const int clockPin = 6;   // Pin para el reloj del contador
-const int direccionPin = 7; // Pin para controlar la dirección del contador
+const int clockPin = 12;   // Pin para el reloj del contador
+const int direccionPin = 13; // Pin para controlar la dirección del contador
 
 void setup() {
   for (int i = 0; i < numParqueos; i++) {
@@ -44,6 +44,6 @@ void loop() {
 
 void generarPulsoReloj() {
   digitalWrite(clockPin, HIGH);
-  delayMicroseconds(10); // Pulso corto
+  delay(50); // Pulso corto
   digitalWrite(clockPin, LOW);
 }
