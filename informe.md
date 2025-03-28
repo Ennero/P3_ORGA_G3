@@ -449,14 +449,6 @@ El equipo utilizado para la realización del proyecto, tanto adquirido como prop
 
 ## PRESUPUESTO  
 
-<style>
-  table { border-collapse: collapse; width: 100%; }
-  th { background-color: #3366cc; color: white; padding: 8px; }
-  td { padding: 8px; border: 1px solid #ddd; }
-  .fecha { background-color: #b3cde0; font-weight: bold; }
-  .subtotal { background-color: #d9e1f2; font-weight: bold; }
-  .total { background-color: #d9ead3; font-weight: bold; font-size: 1.2em; }
-</style>
 
 | Fecha       | Presupuesto                        | Q       |
 |------------|------------------------------------|--------|
