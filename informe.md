@@ -7,7 +7,7 @@
 **CATEDRÁTICO:** ING. OTTO RENE ESCOBAR LEIVA  
 **TUTOR ACADÉMICO:** JUAN JOSUE ZULETA BEB  
 
----
+
 <div style="position: relative; display: inline-block;">
     <img src="img y otros/logo.png" alt="Imagen de fondo" width="500">
     <div style="position: absolute; top: 20px; left: 50px; color: white; font-size: 24px; font-weight: bold;">
@@ -16,7 +16,7 @@
 </div>
 
 
----
+
 
 
 
@@ -31,7 +31,7 @@
 
 **GUATEMALA, 22 DE MARZO DEL 2025**  
 </div>
-----
+
 <div style="font-family: 'Times New Roman', Times, serif;">
 
 # ÍNDICE  
@@ -59,8 +59,7 @@
    - [APORTE DE TODOS LOS INTEGRANTES DEL GRUPO](#aporte-de-todos-los-integrantes-del-grupo)  
    - [DIAGRAMA DEL CIRCUITO IMPRESO](#diagrama-del-circuito-impreso)  
    - [FOTOGRAFÍA DE LOS CIRCUITOS FÍSICOS](#fotografía-de-los-circuitos-físicos)  
-
----
+9. [Videos del funcionamiento de manera separada](#videos-del-funcionamiento-de-manera-separada)  
 
 ## INTRODUCCIÓN  
 
@@ -73,7 +72,7 @@ Para mejorar la seguridad del sistema, se diseñó un mecanismo de restricción 
 La simulación de este proyecto se llevó a cabo en Proteus, asegurando que la lógica digital funcione correctamente antes de la implementación física. Se respetaron los requisitos de la práctica, garantizando la funcionalidad del sistema sin el uso de Arduino en la gestión de los contadores de parqueos ocupados y vacíos, lo cual fue manejado exclusivamente con circuitos lógicos.  
 
 
----
+
 
 ## OBJETIVOS  
 
@@ -85,7 +84,7 @@ Desarrollar e implementar un sistema de parqueo automatizado basado en circuitos
 2. Implementar un mecanismo de seguridad que impida accesos no autorizados, mediante un sistema de validación de tickets y una alarma de robo en caso de intentos de salida no autorizados.  
 3. Construir físicamente el sistema respetando las restricciones de hardware, asegurando su correcto funcionamiento con la menor cantidad de dispositivos posibles.  
 
----
+
 
 ## CONTENIDO  
 
@@ -447,11 +446,70 @@ El equipo utilizado para la realización del proyecto, tanto adquirido como prop
 - **Arduino Mega**
 - **Decoders**
 - **Display 7 segmentos**
----
 
 ## PRESUPUESTO  
 
-_(-------------------------)_
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th { background-color: #3366cc; color: white; padding: 8px; }
+  td { padding: 8px; border: 1px solid #ddd; }
+  .fecha { background-color: #b3cde0; font-weight: bold; }
+  .subtotal { background-color: #d9e1f2; font-weight: bold; }
+  .total { background-color: #d9ead3; font-weight: bold; font-size: 1.2em; }
+</style>
+
+| Fecha       | Presupuesto                        | Q       |
+|------------|------------------------------------|--------|
+| <span class="th">11/03/2025</span> | PUNTA DE CAUTIN                  | Q50.00  |
+|            | 2 BROCAS                           | Q18.00  |
+|            | TRASTE PARA GUARDAR COSAS         | Q30.00  |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q98.00</span>  |
+| <span class="fa">13/03/2025</span> | SENSOR ULTRASONICO               | Q27.00  |
+|            | SENSOR DE OBSTACULOS INFRARROJOS   | Q18.00  |
+|            | MOTOR DE 1-6 VOLTIOS               | Q15.00  |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q60.00</span>  |
+| <span class="feha">14/03/2025</span> | 9 FOTORESISTENCIA LDR            | Q33.70  |
+|            | 2 BROCAS                           | Q19.00  |
+|            | ACIDO, FOTORESISTENCIA Y OTROS    | Q21.00  |
+|            | 5 METROS DE ESTAÑO                | Q12.50  |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q86.20</span>  |
+| <span class="feha">17/03/2025</span> | 3M DE ALAMBRE ROJO PARA PROTOBOARD | Q9.00   |
+|            | 1 FOTORESISTENCIAS                 | Q3.75   |
+|            | 1M TERMOCOLGIBLE                   | Q3.50   |
+|            | 10 RESISTENCIAS 330                | Q5.00   |
+|            | 1M TERMOCOLGIBLE                   | Q2.05   |
+|            | 5M DE ALAMBRE NEGRO                | Q18.00  |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q38.75</span>  |
+| <span class="fcha">20/03/2025</span> | 1 Teclado                        | Q15.00  |
+|            | 4 metros de cable                  | Q8.00   |
+|            | 6 CABLES DUPONT 10CM               | Q3.00   |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q26.00</span>  |
+| <span class="echa">22/03/2025</span> | 2 ACETONA                        | Q12.00  |
+|            | 2 ENCENDEDORES                     | Q4.00   |
+|            | 2 FLIP-FLOP                        | Q20.00  |
+|            | 3 DECODERS                         | Q45.00  |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q81.00</span>  |
+| <span class="feha">24/03/2025</span> | SENSOR ULTRASONICO               | Q24.00  |
+|            | 2 METROS DE CABLE                  | Q4.00   |
+|            | RESISTENCIAS VARIOS                | Q5.00   |
+|            | 2 FLIP-FLOP-K                      | Q20.00  |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q53.00</span>  |
+| <span class="fcha">25/03/2025</span> | 10 M DE ALAMBRE ROJO             | Q12.00  |
+|            | 1 FLIP FLOP                        | Q12.00  |
+|            | 4 TORNILLOS                        | Q6.00   |
+|            | 4 TUERCAS                          | Q2.00   |
+|            | 20 CABLES DUPONT                   | Q15.00  |
+|            | 5 CABLES DUPONT                    | Q3.70   |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q58.70</span>  |
+| <span class="feha">26/03/2025</span> | 46 CABLES DUPONT                 | Q52.50  |
+|            | BOMBILLA (CAMBIA DE COLOR)         | Q32.50  |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q84.50</span>  |
+| <span class="feha">27/03/2025</span> | MATERIAL PARA DECORAR            | Q26.25  |
+|            | 3 BARRITAS DE SILICON              | Q3.00   |
+|            | CHICHARRONES Y TORTILLAS           | Q10.00  |
+|            | <span class="subtotal">subtotal</span>                        | <span class="subtotal">Q39.25</span>  |
+|            | <span class="total">TOTAL ABSOLUTO</span>                 | <span class="total">Q625.40</span>  |
+
 
 ---
 
@@ -460,13 +518,13 @@ _(-------------------------)_
 # Aportaciones del Proyecto
 
 ## Enner Mendizabal - 202302220  
-Como coordinador del grupo, proporcionó los materiales necesarios para la maqueta y estableció una base sólida para su construcción. Además, contribuyó activamente en la implementación y distribución de los estacionamientos en los tres niveles de la maqueta, asegurando una estructura funcional y organizada. También brindó apoyo logístico en la planificación general del proyecto.
+Como coordinador del grupo, proporcionó los materiales necesarios para la maqueta y estableció una base sólida para su construcción. Además, contribuyó activamente en la implementación y distribución de los estacionamientos en los tres niveles de la maqueta, asegurando una estructura funcional y organizada. También brindó apoyo logístico en la planificación general del proyecto, ademas de lograr hacer un contador funcional.
 
 - ## Esteban Sánchez Túchez  
-Diseñó y programó el contador digital en Proteus, asegurando su correcto funcionamiento tanto en simulación como en su versión física. Además, desarrolló el código en Arduino para los contadores y propuso ideas innovadoras para mejorar otras secciones del proyecto. También desempeñó un papel clave en la integración del puente H con el teclado, garantizando su correcto funcionamiento mediante pruebas y ajustes.
+Diseñó y programó el contador digital en Proteus, asegurando su correcto funcionamiento tanto en simulación como en su versión física. Además, desarrolló el código en Arduino para los contadores y propuso ideas innovadoras para mejorar otras secciones del proyecto. También desempeñó un papel clave en guiar a los demas en la implementacion de los demas contadores, garantizando su correcto funcionamiento mediante pruebas y ajustes, ademas ayudo en parte de la decoracion de la misma.
 
 - ## Juan José Sandoval Ruiz  
-Se encargó de la creación del puente H, tanto en su versión física como en su impresión, asegurando su correcto diseño y operación. Asimismo, diseñó y construyó el teclado en Proteus y en su versión física, optimizando su funcionalidad y conexión con otros componentes. También desarrolló el código en Arduino para el correcto funcionamiento del teclado y el puente H, asegurando una integración eficiente en el sistema general del proyecto.
+Se encargó de la creación del puente H, tanto en su versión física como en su impresión, asegurando su correcto diseño y operación. Asimismo, diseñó y construyó el teclado en Proteus y en su versión física, optimizando su funcionalidad y conexión con otros componentes. También desarrolló el código en Arduino para el correcto funcionamiento del teclado y el puente H, asegurando una integración eficiente en el sistema general del proyecto, aporto en la posicion de las luces para cada nivel de estacionmiento.
 
 - ## David Estuardo Barrios Ramírez  
 Participó activamente en la soldadura del puente H, asegurando conexiones eléctricas firmes y funcionales. Además, colaboró en la creación de los sensores de los tres niveles de la maqueta, garantizando su correcta instalación y calibración. También brindó apoyo en la construcción estructural de la maqueta y contribuyó en el desarrollo del contador, optimizando su precisión y respuesta dentro del sistema.
@@ -475,7 +533,6 @@ Participó activamente en la soldadura del puente H, asegurando conexiones eléc
 Administró el presupuesto del grupo, asegurando una correcta distribución y asignación de los recursos necesarios para el desarrollo del proyecto. Fue responsable de la elaboración del informe del grupo, documentando de manera detallada cada etapa del proceso. Además, colaboró activamente en la decoración de la maqueta para mejorar su presentación. También asumió la responsabilidad de todo el proceso relacionado con las placas, desde el planchado y la inmersión en ácido hasta el pulido y acabado final, garantizando precisión, calidad y estética en cada detalle del proyecto.
 
 
----
 
 ## CONCLUSIONES  
 El diseño y simulación del sistema de control de parqueo en Proteus utilizando circuitos combinacionales y secuenciales ha sido eficaz, demostrando la capacidad del sistema para gestionar de manera adecuada los espacios disponibles. La integración de sensores y flip-flops ha permitido implementar un sistema funcional que sigue las reglas de ocupación y liberación de espacios con precisión.
@@ -484,11 +541,9 @@ Se ha implementado un mecanismo de seguridad que garantiza la protección contra
 
 La construcción del sistema físico ha respetado las restricciones de hardware, utilizando el número mínimo de dispositivos necesarios sin comprometer la funcionalidad. El sistema se ha ensamblado de manera que opera correctamente bajo condiciones reales, manteniendo un buen desempeño en la gestión de parqueo y en el control de seguridad. 
 
----
 
 ## ANEXOS  
 
----
 
 ## APORTE DE TODOS LOS INTEGRANTES DEL GRUPO  
 
@@ -502,7 +557,6 @@ La construcción del sistema físico ha respetado las restricciones de hardware,
 
 ![alt text](/img%20y%20otros/e.png)
 
----
 
 ## DIAGRAMA DEL CIRCUITO IMPRESO  
 
@@ -510,7 +564,6 @@ La construcción del sistema físico ha respetado las restricciones de hardware,
 
 ![alt text](/img%20y%20otros/impresion_PuenteH.png )
 
----
 
 ## FOTOGRAFÍA DE LOS CIRCUITOS FÍSICOS  
 
@@ -552,6 +605,12 @@ La construcción del sistema físico ha respetado las restricciones de hardware,
     </a>
     <h5>Video 5: Servo motor funcional</h5>
     <a href="https://drive.google.com/file/d/1bIblLQhWFZWylOnM9_nF1qKr8OAT_6ox/view?usp=sharing" 
+       target="_blank" 
+       class="btn btn-primary btn-lg shadow-lg">
+        🎥 Ver Video
+    </a>
+    <h5>Video 6:Unido funcional</h5>
+    <a href="https://drive.google.com/file/d/1_mlIQ39Zu3NAc-mnzczPx472EULAjhww/view?usp=sharing" 
        target="_blank" 
        class="btn btn-primary btn-lg shadow-lg">
         🎥 Ver Video
