@@ -29,7 +29,7 @@
  **Brandon Antonio Marroquin Pérez** - 202300813  
  **David Estuardo Barrios Ramírez** - 202300670  
 
-**GUATEMALA, 22 DE MARZO DEL 2025**  
+**GUATEMALA, 29 DE MARZO DEL 2025**  
 </div>
 
 <div style="font-family: 'Times New Roman', Times, serif;">
